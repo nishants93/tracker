@@ -1,32 +1,38 @@
 "use strict";
 
 const Koa = require('koa');
-const Router = require('koa-router');
+const Router = require('../routes');
+const Broker = require('../broker');
+const Config = require("../config");
 
 class App extends Koa {
     constructor() {
         super();
         let self = this;
+        
         self.router = new Router();
+        self.broker = new Broker();
     }
 
     attachRoutes() {
         let self = this;
 
-        self.router.get('/', ctx => {
-            ctx.body = "hello koa";
-        });
-
+        self.router.declareRoutes();
         self.use(self.router.routes());
+    }
+
+    attachBroker() {
+        let self = this;
+        self.broker.attachListeners();
     }
 
     startServer() {
         let self = this;
 
-        self.listen(3000, () => {
+        self.listen(Config.server.port, () => {
             console.log("server started")
         });
-        
+
     }
 
 }
