@@ -1,0 +1,23 @@
+{
+  "name": "tracker",
+  "version": "1.0.0",
+  "description": "Server to serve a vehicle health monitoring device.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nishants93/tracker.git"
+  },
+  "author": "Nishant Srivastava",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nishants93/tracker/issues"
+  },
+  "homepage": "https://github.com/nishants93/tracker#readme",
+  "dependencies": {
+    "koa": "^2.0.0-alpha.8",
+    "koa-router": "^7.2.1"
+  }
+}
