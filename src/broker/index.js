@@ -2,6 +2,7 @@
 
 const mqtt = require("mqtt");
 const Config = require("../config");
+const Controller = require("../controller");
 
 class Broker {
     constructor() {
@@ -13,11 +14,12 @@ class Broker {
         let self = this;
 
         self.broker.on("connect", () => {
-            self.broker.subscribe('tracker');
+            self.broker.subscribe('vehicleHealth');
         })
 
         self.broker.on("message", (topic, message) => {
-            console.log(message.toString());
+            let controller = new Controller(topic, message.toString());
+            controller.execute();
         })
     }
 }
